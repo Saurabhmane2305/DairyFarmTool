@@ -1,5 +1,6 @@
 
-﻿using System;
+using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,9 +50,10 @@ namespace DairyFarmTool
             NameTb.Text = "";
             PhoneTb.Text = "";
             AddressTb.Text = "";
-
-
+            GenCb.Text = "";
+            DOB.Value = DateTime.Now; // Set the value to clear the DateTimePicker
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -76,7 +78,7 @@ namespace DairyFarmTool
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Breeding Record Saved Successfully");
+                    MessageBox.Show("Employee Record Saved Successfully");
                 }
                 catch (Exception ex)
                 {
@@ -95,36 +97,152 @@ namespace DairyFarmTool
         int key = 0;
         private void EmployeeDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-          
-                if (e.RowIndex >= 0) // Check if a valid row is clicked
-                {
-                    // Assuming that the DataGridView columns are in this order: EmpID, EmpName, EmpDob, Gender, Phone, Address
-                    GenCb.SelectedValue = EmployeeDGV.Rows[e.RowIndex].Cells[0].Value?.ToString();
-                    NameTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();
-                PhoneTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[2].Value?.ToString();
-                AddressTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[3].Value?.ToString();
-                // You can continue updating other text fields with the respective cell values from the DataGridView.
+            if (e.RowIndex >= 0)
+            {
+                // Assuming the DataGridView columns are in this order: EmpID, EmpName, EmpDob, Gender, Phone, Address
+
+                NameTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[1].Value?.ToString(); // EmpName
+                DOB.Text = EmployeeDGV.Rows[e.RowIndex].Cells[2].Value?.ToString(); // EmpDob
+                GenCb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[3].Value?.ToString(); // Gender
+                PhoneTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[4].Value?.ToString(); // Phone
+                AddressTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[5].Value?.ToString(); // Address
 
                 if (string.IsNullOrEmpty(NameTb.Text))
+                {
+                    key = 0;
+                }
+                else
+                {
+                    try
                     {
-                        key = 0;
+                        key = Convert.ToInt32(EmployeeDGV.Rows[e.RowIndex].Cells[0].Value?.ToString()); // EmpID
                     }
-                    else
+                    catch (FormatException ex)
                     {
-                        try
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+
+        private void Employee_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            if (EmployeeDGV.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Please select a row to delete.");
+            }
+            else
+            {
+                int selectedRowIndex = EmployeeDGV.SelectedRows[0].Index;
+
+                if (selectedRowIndex >= 0)
+                {
+                    int empId = Convert.ToInt32(EmployeeDGV.Rows[selectedRowIndex].Cells["EmpID"].Value); // Replace "EmpID" with your actual primary key column name
+
+                    try
+                    {
+                        using (SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\DairyFarmToolDb.mdf;Integrated Security=True;Connect Timeout=30"))
                         {
-                            key = Convert.ToInt32(EmployeeDGV.Rows[e.RowIndex].Cells[0].Value?.ToString());
-                        }
-                        catch (FormatException ex)
-                        {
-                            MessageBox.Show("Error: " + ex.Message);
+                            Con.Open();
+                            string deleteQuery = "DELETE FROM EmployeeTbl WHERE EmpID = @EmpId"; // Replace "EmpID" with your actual primary key column name
+                            using (SqlCommand cmd = new SqlCommand(deleteQuery, Con))
+                            {
+                                cmd.Parameters.AddWithValue("@EmpId", empId);
+                                int rowsAffected = cmd.ExecuteNonQuery();
+                                if (rowsAffected > 0)
+                                {
+                                    MessageBox.Show("Employee Deleted Successfully");
+                                    populate(); // Refresh the DataGridView after deletion
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Employee not found or not deleted.");
+                                }
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (EmployeeDGV.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Please select a row to edit.");
+            }
+            else
+            {
+                int selectedRowIndex = EmployeeDGV.SelectedRows[0].Index;
+                DataGridViewRow selectedRow = EmployeeDGV.Rows[selectedRowIndex];
+
+                try
+                {
+                    using (SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\DairyFarmToolDb.mdf;Integrated Security=True;Connect Timeout=30"))
+                    {
+                        Con.Open();
+
+                        // Loop through all columns in the selected row
+                        foreach (DataGridViewCell cell in selectedRow.Cells)
+                        {
+                            string columnName = EmployeeDGV.Columns[cell.ColumnIndex].Name;
+                            string currentValue = cell.Value.ToString(); // Current cell value
+                            string newValue = Interaction.InputBox($"Edit {columnName}:", "Edit Cell", currentValue);
+
+                            // Check if the user canceled the edit
+                            if (newValue == currentValue)
+                            {
+                                continue;
+                            }
+
+                            // Update the cell with the new value
+                            cell.Value = newValue;
+
+                            // If you want to update the database, construct an UPDATE query and execute it
+                            string updateQuery = $"UPDATE EmployeeTbl SET {columnName} = @NewValue WHERE EmpID = @PrimaryKey";
+                            using (SqlCommand cmd = new SqlCommand(updateQuery, Con))
+                            {
+                                cmd.Parameters.AddWithValue("@NewValue", newValue);
+
+                                // Provide the actual primary key value of the row you're editing
+                                cmd.Parameters.AddWithValue("@PrimaryKey", EmployeeDGV.Rows[selectedRowIndex].Cells["EmpID"].Value.ToString());
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        // Refresh the DataGridView after editing
+                        EmployeeDGV.Refresh();
+                        MessageBox.Show("Row Edited Successfully");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
 
         }
     }
+}
 
 
 

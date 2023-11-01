@@ -56,29 +56,32 @@
             label5 = new Label();
             label2 = new Label();
             panel9 = new Panel();
+            dateTimePicker1 = new DateTimePicker();
+            label23 = new Label();
             label4 = new Label();
-            dataGridView1 = new DataGridView();
+            ExpDGV = new DataGridView();
             button5 = new Button();
             label9 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            comboBox1 = new ComboBox();
-            textBox2 = new TextBox();
+            ExpDate = new DateTimePicker();
+            PurpCb = new ComboBox();
+            AmountTb = new TextBox();
             label3 = new Label();
             label8 = new Label();
             label1 = new Label();
             panel10 = new Panel();
-            dateTimePicker3 = new DateTimePicker();
+            IncomeDGV = new DataGridView();
+            Filterdate = new DateTimePicker();
             label21 = new Label();
             label10 = new Label();
-            dataGridView2 = new DataGridView();
             button1 = new Button();
             label11 = new Label();
-            dateTimePicker2 = new DateTimePicker();
-            comboBox2 = new ComboBox();
-            textBox1 = new TextBox();
+            IncDate = new DateTimePicker();
+            IncPurposeCb = new ComboBox();
+            IncAmtTb = new TextBox();
             label18 = new Label();
             label19 = new Label();
             label20 = new Label();
+            label22 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             panel8.SuspendLayout();
@@ -96,9 +99,9 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ExpDGV).BeginInit();
             panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)IncomeDGV).BeginInit();
             SuspendLayout();
             // 
             // label17
@@ -107,7 +110,7 @@
             label17.BackColor = SystemColors.Control;
             label17.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label17.ForeColor = SystemColors.Highlight;
-            label17.Location = new Point(594, 44);
+            label17.Location = new Point(578, 41);
             label17.Name = "label17";
             label17.Size = new Size(161, 25);
             label17.TabIndex = 50;
@@ -128,7 +131,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(260, 600);
+            panel1.Size = new Size(260, 680);
             panel1.TabIndex = 51;
             // 
             // label16
@@ -403,7 +406,7 @@
             label2.BackColor = SystemColors.Control;
             label2.Font = new Font("Clarendon Blk BT", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(511, 0);
+            label2.Location = new Point(509, 0);
             label2.Name = "label2";
             label2.Size = new Size(322, 42);
             label2.TabIndex = 52;
@@ -412,20 +415,44 @@
             // panel9
             // 
             panel9.BorderStyle = BorderStyle.Fixed3D;
+            panel9.Controls.Add(dateTimePicker1);
+            panel9.Controls.Add(label23);
             panel9.Controls.Add(label4);
-            panel9.Controls.Add(dataGridView1);
+            panel9.Controls.Add(ExpDGV);
             panel9.Controls.Add(button5);
             panel9.Controls.Add(label9);
-            panel9.Controls.Add(dateTimePicker1);
-            panel9.Controls.Add(comboBox1);
-            panel9.Controls.Add(textBox2);
+            panel9.Controls.Add(ExpDate);
+            panel9.Controls.Add(PurpCb);
+            panel9.Controls.Add(AmountTb);
             panel9.Controls.Add(label3);
             panel9.Controls.Add(label8);
             panel9.Controls.Add(label1);
-            panel9.Location = new Point(272, 72);
+            panel9.Location = new Point(272, 69);
             panel9.Name = "panel9";
-            panel9.Size = new Size(823, 258);
+            panel9.Size = new Size(823, 300);
             panel9.TabIndex = 75;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.CalendarFont = new Font("Century", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Location = new Point(476, 54);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(270, 27);
+            dateTimePicker1.TabIndex = 67;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.BackColor = SystemColors.Control;
+            label23.Font = new Font("Century", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label23.ForeColor = SystemColors.ActiveCaptionText;
+            label23.Location = new Point(392, 59);
+            label23.Name = "label23";
+            label23.Size = new Size(57, 20);
+            label23.TabIndex = 66;
+            label23.Text = "Filter";
             // 
             // label4
             // 
@@ -433,22 +460,24 @@
             label4.BackColor = SystemColors.Control;
             label4.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ControlText;
-            label4.Location = new Point(494, 16);
+            label4.Location = new Point(439, 12);
             label4.Name = "label4";
             label4.Size = new Size(189, 25);
             label4.TabIndex = 63;
             label4.Text = "Expenditures List";
             // 
-            // dataGridView1
+            // ExpDGV
             // 
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(325, 44);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(482, 206);
-            dataGridView1.TabIndex = 62;
+            ExpDGV.AllowUserToOrderColumns = true;
+            ExpDGV.BackgroundColor = SystemColors.ControlLightLight;
+            ExpDGV.BorderStyle = BorderStyle.Fixed3D;
+            ExpDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ExpDGV.Location = new Point(299, 87);
+            ExpDGV.Name = "ExpDGV";
+            ExpDGV.RowTemplate.Height = 25;
+            ExpDGV.Size = new Size(512, 206);
+            ExpDGV.TabIndex = 62;
+            ExpDGV.CellClick += ExpDGV_CellClick;
             // 
             // button5
             // 
@@ -461,6 +490,7 @@
             button5.TabIndex = 61;
             button5.Text = "Save";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // label9
             // 
@@ -474,32 +504,32 @@
             label9.TabIndex = 60;
             label9.Text = "Date";
             // 
-            // dateTimePicker1
+            // ExpDate
             // 
-            dateTimePicker1.CalendarFont = new Font("Century", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Location = new Point(5, 67);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(270, 27);
-            dateTimePicker1.TabIndex = 59;
+            ExpDate.CalendarFont = new Font("Century", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            ExpDate.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            ExpDate.Location = new Point(5, 67);
+            ExpDate.Name = "ExpDate";
+            ExpDate.Size = new Size(270, 27);
+            ExpDate.TabIndex = 59;
             // 
-            // comboBox1
+            // PurpCb
             // 
-            comboBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Admin", "Employee" });
-            comboBox1.Location = new Point(4, 128);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(146, 23);
-            comboBox1.TabIndex = 57;
+            PurpCb.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            PurpCb.FormattingEnabled = true;
+            PurpCb.Items.AddRange(new object[] { "Maintenance", "Food", "Salary", "Tax", "Others" });
+            PurpCb.Location = new Point(4, 128);
+            PurpCb.Name = "PurpCb";
+            PurpCb.Size = new Size(146, 23);
+            PurpCb.TabIndex = 57;
             // 
-            // textBox2
+            // AmountTb
             // 
-            textBox2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(5, 179);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(146, 23);
-            textBox2.TabIndex = 55;
+            AmountTb.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            AmountTb.Location = new Point(5, 179);
+            AmountTb.Name = "AmountTb";
+            AmountTb.Size = new Size(146, 23);
+            AmountTb.TabIndex = 55;
             // 
             // label3
             // 
@@ -541,31 +571,45 @@
             // panel10
             // 
             panel10.BorderStyle = BorderStyle.Fixed3D;
-            panel10.Controls.Add(dateTimePicker3);
+            panel10.Controls.Add(IncomeDGV);
+            panel10.Controls.Add(Filterdate);
             panel10.Controls.Add(label21);
             panel10.Controls.Add(label10);
-            panel10.Controls.Add(dataGridView2);
             panel10.Controls.Add(button1);
             panel10.Controls.Add(label11);
-            panel10.Controls.Add(dateTimePicker2);
-            panel10.Controls.Add(comboBox2);
-            panel10.Controls.Add(textBox1);
+            panel10.Controls.Add(IncDate);
+            panel10.Controls.Add(IncPurposeCb);
+            panel10.Controls.Add(IncAmtTb);
             panel10.Controls.Add(label18);
             panel10.Controls.Add(label19);
             panel10.Controls.Add(label20);
-            panel10.Location = new Point(272, 336);
+            panel10.Location = new Point(267, 375);
             panel10.Name = "panel10";
-            panel10.Size = new Size(823, 264);
+            panel10.Size = new Size(823, 304);
             panel10.TabIndex = 77;
             // 
-            // dateTimePicker3
+            // IncomeDGV
             // 
-            dateTimePicker3.CalendarFont = new Font("Century", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker3.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker3.Location = new Point(476, 31);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(270, 27);
-            dateTimePicker3.TabIndex = 65;
+            IncomeDGV.AllowUserToOrderColumns = true;
+            IncomeDGV.BackgroundColor = SystemColors.ControlLightLight;
+            IncomeDGV.BorderStyle = BorderStyle.Fixed3D;
+            IncomeDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            IncomeDGV.Location = new Point(304, 80);
+            IncomeDGV.Name = "IncomeDGV";
+            IncomeDGV.RowTemplate.Height = 25;
+            IncomeDGV.Size = new Size(512, 217);
+            IncomeDGV.TabIndex = 66;
+            IncomeDGV.CellClick += IncomeDGV_CellClick;
+            // 
+            // Filterdate
+            // 
+            Filterdate.CalendarFont = new Font("Century", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Filterdate.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Filterdate.Location = new Point(476, 47);
+            Filterdate.Name = "Filterdate";
+            Filterdate.Size = new Size(270, 27);
+            Filterdate.TabIndex = 65;
+            Filterdate.ValueChanged += dateTimePicker3_ValueChanged;
             // 
             // label21
             // 
@@ -573,7 +617,7 @@
             label21.BackColor = SystemColors.Control;
             label21.Font = new Font("Century", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label21.ForeColor = SystemColors.ActiveCaptionText;
-            label21.Location = new Point(392, 36);
+            label21.Location = new Point(392, 52);
             label21.Name = "label21";
             label21.Size = new Size(57, 20);
             label21.TabIndex = 64;
@@ -585,22 +629,11 @@
             label10.BackColor = SystemColors.Control;
             label10.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label10.ForeColor = SystemColors.ControlText;
-            label10.Location = new Point(517, 7);
+            label10.Location = new Point(476, 10);
             label10.Name = "label10";
             label10.Size = new Size(129, 25);
             label10.TabIndex = 63;
             label10.Text = "Income List";
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.AllowUserToOrderColumns = true;
-            dataGridView2.BackgroundColor = SystemColors.Control;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(295, 64);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(512, 193);
-            dataGridView2.TabIndex = 62;
             // 
             // button1
             // 
@@ -613,6 +646,7 @@
             button1.TabIndex = 61;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // label11
             // 
@@ -626,32 +660,32 @@
             label11.TabIndex = 60;
             label11.Text = "Date ";
             // 
-            // dateTimePicker2
+            // IncDate
             // 
-            dateTimePicker2.CalendarFont = new Font("Century", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker2.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker2.Location = new Point(4, 72);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(270, 27);
-            dateTimePicker2.TabIndex = 59;
+            IncDate.CalendarFont = new Font("Century", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            IncDate.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            IncDate.Location = new Point(4, 72);
+            IncDate.Name = "IncDate";
+            IncDate.Size = new Size(270, 27);
+            IncDate.TabIndex = 59;
             // 
-            // comboBox2
+            // IncPurposeCb
             // 
-            comboBox2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Admin", "Employee" });
-            comboBox2.Location = new Point(3, 125);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(146, 23);
-            comboBox2.TabIndex = 57;
+            IncPurposeCb.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            IncPurposeCb.FormattingEnabled = true;
+            IncPurposeCb.Items.AddRange(new object[] { "Sales", "Training", "Services" });
+            IncPurposeCb.Location = new Point(3, 125);
+            IncPurposeCb.Name = "IncPurposeCb";
+            IncPurposeCb.Size = new Size(146, 23);
+            IncPurposeCb.TabIndex = 57;
             // 
-            // textBox1
+            // IncAmtTb
             // 
-            textBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(3, 177);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(146, 23);
-            textBox1.TabIndex = 55;
+            IncAmtTb.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            IncAmtTb.Location = new Point(3, 177);
+            IncAmtTb.Name = "IncAmtTb";
+            IncAmtTb.Size = new Size(146, 23);
+            IncAmtTb.TabIndex = 55;
             // 
             // label18
             // 
@@ -689,11 +723,24 @@
             label20.TabIndex = 51;
             label20.Text = "Incomes";
             // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.BackColor = SystemColors.Control;
+            label22.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label22.ForeColor = SystemColors.Highlight;
+            label22.Location = new Point(1066, 9);
+            label22.Name = "label22";
+            label22.Size = new Size(24, 25);
+            label22.TabIndex = 78;
+            label22.Text = "1";
+            // 
             // Finance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1102, 600);
+            ClientSize = new Size(1102, 680);
+            Controls.Add(label22);
             Controls.Add(panel10);
             Controls.Add(panel9);
             Controls.Add(label2);
@@ -729,10 +776,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ExpDGV).EndInit();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)IncomeDGV).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -767,27 +814,30 @@
         private Label label2;
         private Panel panel9;
         private Label label1;
-        private ComboBox comboBox1;
-        private TextBox textBox2;
+        private ComboBox PurpCb;
+        private TextBox AmountTb;
         private Label label3;
         private Label label8;
         private Label label9;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker ExpDate;
         private Button button5;
-        private DataGridView dataGridView1;
+        private DataGridView ExpDGV;
         private Label label4;
         private Panel panel10;
         private Label label10;
-        private DataGridView dataGridView2;
         private Button button1;
         private Label label11;
-        private DateTimePicker dateTimePicker2;
-        private ComboBox comboBox2;
-        private TextBox textBox1;
+        private DateTimePicker IncDate;
+        private ComboBox IncPurposeCb;
+        private TextBox IncAmtTb;
         private Label label18;
         private Label label19;
         private Label label20;
-        private DateTimePicker dateTimePicker3;
+        private DateTimePicker Filterdate;
         private Label label21;
+        private Label label22;
+        private DataGridView IncomeDGV;
+        private DateTimePicker dateTimePicker1;
+        private Label label23;
     }
 }

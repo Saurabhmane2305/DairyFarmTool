@@ -53,26 +53,26 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             label5 = new Label();
-            comboBox1 = new ComboBox();
-            button4 = new Button();
             button3 = new Button();
             button2 = new Button();
-            button1 = new Button();
             label11 = new Label();
-            dataGridView1 = new DataGridView();
-            textBox5 = new TextBox();
+            SalesDGV = new DataGridView();
+            TotalTb = new TextBox();
             label10 = new Label();
             label9 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            Date = new DateTimePicker();
+            PhoneTb = new TextBox();
+            NameTb = new TextBox();
+            QuantityTb = new TextBox();
             label8 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             label17 = new Label();
+            PriceTb = new TextBox();
+            EmpIdCb = new ComboBox();
+            label18 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             panel8.SuspendLayout();
@@ -89,7 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SalesDGV).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -376,63 +376,31 @@
             label5.Text = "Cows";
             label5.Click += label5_Click;
             // 
-            // comboBox1
-            // 
-            comboBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Admin", "Employee" });
-            comboBox1.Location = new Point(301, 145);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(146, 23);
-            comboBox1.TabIndex = 67;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.ControlDark;
-            button4.Font = new Font("Century", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(888, 305);
-            button4.Name = "button4";
-            button4.Size = new Size(185, 42);
-            button4.TabIndex = 66;
-            button4.Text = "Delete";
-            button4.UseVisualStyleBackColor = false;
-            // 
             // button3
             // 
             button3.BackColor = SystemColors.ControlDark;
             button3.Font = new Font("Century", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(687, 303);
+            button3.Location = new Point(783, 305);
             button3.Name = "button3";
             button3.Size = new Size(185, 42);
             button3.TabIndex = 65;
-            button3.Text = "Update";
+            button3.Text = "Clear";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
             button2.BackColor = SystemColors.ControlDark;
             button2.Font = new Font("Century", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(266, 303);
+            button2.Location = new Point(408, 305);
             button2.Name = "button2";
             button2.Size = new Size(185, 42);
             button2.TabIndex = 64;
             button2.Text = "Save";
             button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ControlDark;
-            button1.Font = new Font("Century", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(478, 303);
-            button1.Name = "button1";
-            button1.Size = new Size(185, 42);
-            button1.TabIndex = 63;
-            button1.Text = "Edit";
-            button1.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label11
             // 
@@ -446,23 +414,25 @@
             label11.TabIndex = 62;
             label11.Text = "Sales Report";
             // 
-            // dataGridView1
+            // SalesDGV
             // 
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(277, 409);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(796, 225);
-            dataGridView1.TabIndex = 61;
+            SalesDGV.AllowUserToOrderColumns = true;
+            SalesDGV.BackgroundColor = SystemColors.Control;
+            SalesDGV.BorderStyle = BorderStyle.Fixed3D;
+            SalesDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            SalesDGV.Location = new Point(277, 409);
+            SalesDGV.Name = "SalesDGV";
+            SalesDGV.RowTemplate.Height = 25;
+            SalesDGV.Size = new Size(796, 225);
+            SalesDGV.TabIndex = 61;
+            SalesDGV.CellContentClick += SalesDGV_CellContentClick;
             // 
-            // textBox5
+            // TotalTb
             // 
-            textBox5.Location = new Point(749, 242);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(146, 23);
-            textBox5.TabIndex = 60;
+            TotalTb.Location = new Point(641, 240);
+            TotalTb.Name = "TotalTb";
+            TotalTb.Size = new Size(146, 23);
+            TotalTb.TabIndex = 60;
             // 
             // label10
             // 
@@ -482,40 +452,41 @@
             label9.BackColor = SystemColors.Control;
             label9.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label9.ForeColor = SystemColors.ActiveCaptionText;
-            label9.Location = new Point(407, 200);
+            label9.Location = new Point(346, 200);
             label9.Name = "label9";
-            label9.Size = new Size(146, 25);
+            label9.Size = new Size(65, 25);
             label9.TabIndex = 58;
-            label9.Text = "Date Of Birth";
+            label9.Text = "Date ";
             // 
-            // dateTimePicker1
+            // Date
             // 
-            dateTimePicker1.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Location = new Point(347, 242);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(287, 27);
-            dateTimePicker1.TabIndex = 57;
+            Date.Font = new Font("Century", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Date.Location = new Point(277, 242);
+            Date.Name = "Date";
+            Date.Size = new Size(287, 27);
+            Date.TabIndex = 57;
             // 
-            // textBox4
+            // PhoneTb
             // 
-            textBox4.Location = new Point(896, 139);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(146, 23);
-            textBox4.TabIndex = 56;
+            PhoneTb.Location = new Point(893, 242);
+            PhoneTb.Name = "PhoneTb";
+            PhoneTb.Size = new Size(146, 23);
+            PhoneTb.TabIndex = 56;
             // 
-            // textBox3
+            // NameTb
             // 
-            textBox3.Location = new Point(698, 139);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(146, 23);
-            textBox3.TabIndex = 55;
+            NameTb.Location = new Point(909, 134);
+            NameTb.Name = "NameTb";
+            NameTb.Size = new Size(146, 23);
+            NameTb.TabIndex = 55;
             // 
-            // textBox2
+            // QuantityTb
             // 
-            textBox2.Location = new Point(504, 139);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(146, 23);
-            textBox2.TabIndex = 54;
+            QuantityTb.Location = new Point(698, 134);
+            QuantityTb.Name = "QuantityTb";
+            QuantityTb.Size = new Size(146, 23);
+            QuantityTb.TabIndex = 54;
+            QuantityTb.Leave += QuantityTb_Leave;
             // 
             // label8
             // 
@@ -523,7 +494,7 @@
             label8.BackColor = SystemColors.Control;
             label8.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = SystemColors.ActiveCaptionText;
-            label8.Location = new Point(896, 100);
+            label8.Location = new Point(888, 187);
             label8.Name = "label8";
             label8.Size = new Size(141, 25);
             label8.TabIndex = 53;
@@ -535,7 +506,7 @@
             label4.BackColor = SystemColors.Control;
             label4.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(706, 100);
+            label4.Location = new Point(909, 100);
             label4.Name = "label4";
             label4.Size = new Size(138, 25);
             label4.TabIndex = 52;
@@ -547,7 +518,7 @@
             label3.BackColor = SystemColors.Control;
             label3.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(534, 100);
+            label3.Location = new Point(712, 100);
             label3.Name = "label3";
             label3.Size = new Size(100, 25);
             label3.TabIndex = 51;
@@ -571,7 +542,7 @@
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(315, 100);
+            label1.Location = new Point(517, 100);
             label1.Name = "label1";
             label1.Size = new Size(62, 25);
             label1.TabIndex = 49;
@@ -583,38 +554,68 @@
             label17.BackColor = SystemColors.Control;
             label17.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label17.ForeColor = SystemColors.ActiveCaptionText;
-            label17.Location = new Point(783, 200);
+            label17.Location = new Point(666, 200);
             label17.Name = "label17";
             label17.Size = new Size(64, 25);
             label17.TabIndex = 68;
             label17.Text = "Total";
+            // 
+            // PriceTb
+            // 
+            PriceTb.Location = new Point(494, 139);
+            PriceTb.Name = "PriceTb";
+            PriceTb.Size = new Size(146, 23);
+            PriceTb.TabIndex = 69;
+            // 
+            // EmpIdCb
+            // 
+            EmpIdCb.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            EmpIdCb.FormattingEnabled = true;
+            EmpIdCb.Items.AddRange(new object[] { "Admin", "Employee" });
+            EmpIdCb.Location = new Point(283, 138);
+            EmpIdCb.Name = "EmpIdCb";
+            EmpIdCb.Size = new Size(146, 23);
+            EmpIdCb.TabIndex = 71;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.BackColor = SystemColors.Control;
+            label18.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label18.ForeColor = SystemColors.ActiveCaptionText;
+            label18.Location = new Point(300, 100);
+            label18.Name = "label18";
+            label18.Size = new Size(85, 25);
+            label18.TabIndex = 70;
+            label18.Text = "Emp Id";
             // 
             // Milk_Sales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1085, 639);
+            Controls.Add(EmpIdCb);
+            Controls.Add(label18);
+            Controls.Add(PriceTb);
             Controls.Add(label17);
-            Controls.Add(comboBox1);
-            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(label11);
-            Controls.Add(dataGridView1);
-            Controls.Add(textBox5);
+            Controls.Add(SalesDGV);
+            Controls.Add(TotalTb);
             Controls.Add(label10);
             Controls.Add(label9);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
+            Controls.Add(Date);
+            Controls.Add(PhoneTb);
+            Controls.Add(NameTb);
+            Controls.Add(QuantityTb);
             Controls.Add(label8);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Milk_Sales";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Milk_Sales";
@@ -643,7 +644,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SalesDGV).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -674,25 +675,25 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label label5;
-        private ComboBox comboBox1;
-        private Button button4;
         private Button button3;
         private Button button2;
-        private Button button1;
         private Label label11;
-        private DataGridView dataGridView1;
-        private TextBox textBox5;
+        private DataGridView SalesDGV;
+        private TextBox TotalTb;
         private Label label10;
         private Label label9;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private DateTimePicker Date;
+        private TextBox PhoneTb;
+        private TextBox NameTb;
+        private TextBox QuantityTb;
         private Label label8;
         private Label label4;
         private Label label3;
         private Label label2;
         private Label label1;
         private Label label17;
+        private TextBox PriceTb;
+        private ComboBox EmpIdCb;
+        private Label label18;
     }
 }

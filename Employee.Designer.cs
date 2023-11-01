@@ -110,6 +110,7 @@
             button4.TabIndex = 89;
             button4.Text = "Delete";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -122,6 +123,7 @@
             button3.TabIndex = 88;
             button3.Text = "Clear";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -147,6 +149,7 @@
             button1.TabIndex = 86;
             button1.Text = "Edit";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // label11
             // 
@@ -315,6 +318,7 @@
             Name = "Employee";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Employee";
+            Load += Employee_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
