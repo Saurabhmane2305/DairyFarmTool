@@ -81,7 +81,7 @@
             label18 = new Label();
             label19 = new Label();
             label20 = new Label();
-            label22 = new Label();
+            pictureBox9 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             panel8.SuspendLayout();
@@ -102,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)ExpDGV).BeginInit();
             panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)IncomeDGV).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
             // 
             // label17
@@ -686,6 +687,7 @@
             IncAmtTb.Name = "IncAmtTb";
             IncAmtTb.Size = new Size(146, 23);
             IncAmtTb.TabIndex = 55;
+            IncAmtTb.Text = "IncLbl";
             // 
             // label18
             // 
@@ -723,24 +725,24 @@
             label20.TabIndex = 51;
             label20.Text = "Incomes";
             // 
-            // label22
+            // pictureBox9
             // 
-            label22.AutoSize = true;
-            label22.BackColor = SystemColors.Control;
-            label22.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label22.ForeColor = SystemColors.Highlight;
-            label22.Location = new Point(1066, 9);
-            label22.Name = "label22";
-            label22.Size = new Size(24, 25);
-            label22.TabIndex = 78;
-            label22.Text = "1";
+            pictureBox9.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(1061, 0);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(46, 32);
+            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox9.TabIndex = 74;
+            pictureBox9.TabStop = false;
+            pictureBox9.Click += pictureBox9_Click;
             // 
             // Finance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1102, 680);
-            Controls.Add(label22);
+            Controls.Add(pictureBox9);
             Controls.Add(panel10);
             Controls.Add(panel9);
             Controls.Add(label2);
@@ -780,6 +782,7 @@
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)IncomeDGV).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -835,9 +838,9 @@
         private Label label20;
         private DateTimePicker Filterdate;
         private Label label21;
-        private Label label22;
         private DataGridView IncomeDGV;
         private DateTimePicker dateTimePicker1;
         private Label label23;
+        private PictureBox pictureBox9;
     }
 }

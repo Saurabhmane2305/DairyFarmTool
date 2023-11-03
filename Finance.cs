@@ -17,6 +17,7 @@ namespace DairyFarmTool
         {
             InitializeComponent();
             populateExp();
+            populateInc();
 
         }
 
@@ -134,7 +135,7 @@ namespace DairyFarmTool
                 connection.Open();
 
                 // Define a SQL query to insert a new expenditure record
-                string insertQuery = "INSERT INTO ExpenditureTbl (ExpDate, ExpPurpose, ExpAmount, EmpIdLbl) VALUES (@Date, @Purpose, @Amount, @EmpId); SELECT SCOPE_IDENTITY();";
+                string insertQuery = "INSERT INTO ExpenditureTbl (ExpDate, ExpPurpose, ExpAmount, EmpId) VALUES (@Date, @Purpose, @Amount, @EmpId); SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
                 {
@@ -214,9 +215,17 @@ namespace DairyFarmTool
                 // You can use this data as needed
             }
         }
-        private void Form_Load(object sender, EventArgs e)
+
+        private void populateInc()
         {
-            PopulateIncomeDataGridView();
+            Con.Open();
+            string query = "select * from IncomeTbl";
+            SqlDataAdapter sda = new SqlDataAdapter(query, Con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+            var ds = new DataSet();
+            sda.Fill(ds);
+            IncomeDGV.DataSource = ds.Tables[0];
+            Con.Close();
 
         }
         private void button1_Click(object sender, EventArgs e)
@@ -229,7 +238,7 @@ namespace DairyFarmTool
 
             // Establish a database connection (replace with your connection string)
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\DairyFarmToolDb.mdf;Integrated Security=True;Connect Timeout=30";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\DairyFarmToolDb.mdf;Integrated Security=True;Connect Timeout=30"))
             {
                 connection.Open();
 
@@ -254,7 +263,6 @@ namespace DairyFarmTool
             }
 
             // Populate the DataGridView with the latest income records
-            PopulateIncomeDataGridView();
 
             // Optionally, provide user feedback or reset UI controls
             MessageBox.Show("Income record saved successfully.");
@@ -262,34 +270,7 @@ namespace DairyFarmTool
             IncAmtTb.Clear();
         }
 
-        private void PopulateIncomeDataGridView()
-        {
-            // Establish a database connection
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\DairyFarmToolDb.mdf;Integrated Security=True;Connect Timeout=30";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
 
-                // Define a SQL query to select all income records
-                string selectQuery = "SELECT * FROM IncomeTbl";
-
-                using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
-                {
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                    {
-                        // Create a DataTable to store the data
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-
-                        // Bind the DataTable to the DataGridView
-                        IncomeDGV.DataSource = dataTable;
-                    }
-                }
-
-                // Close the connection
-                connection.Close();
-            }
-        }
 
         // Call PopulateIncomeDataGridView to initially populate the DataGridView
         private void FilterIncome(DateTime filterDate)
@@ -374,6 +355,10 @@ namespace DairyFarmTool
 
         }
 
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 
 

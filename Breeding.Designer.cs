@@ -76,6 +76,7 @@
             label17 = new Label();
             label18 = new Label();
             Remarkstb = new TextBox();
+            pictureBox9 = new PictureBox();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             panel5.SuspendLayout();
@@ -93,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
             // 
             // panel6
@@ -628,11 +630,24 @@
             Remarkstb.Size = new Size(508, 23);
             Remarkstb.TabIndex = 72;
             // 
+            // pictureBox9
+            // 
+            pictureBox9.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(1040, 0);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(46, 32);
+            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox9.TabIndex = 73;
+            pictureBox9.TabStop = false;
+            pictureBox9.Click += pictureBox9_Click;
+            // 
             // Breeding
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1085, 639);
+            Controls.Add(pictureBox9);
             Controls.Add(Remarkstb);
             Controls.Add(label18);
             Controls.Add(label17);
@@ -687,6 +702,7 @@
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -740,5 +756,6 @@
         private Label label17;
         private Label label18;
         private TextBox Remarkstb;
+        private PictureBox pictureBox9;
     }
 }

@@ -76,6 +76,7 @@
             label11 = new Label();
             label18 = new Label();
             textBox1 = new TextBox();
+            pictureBox9 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)CowsDGV).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -93,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
             // 
             // label17
@@ -626,11 +628,24 @@
             textBox1.Size = new Size(146, 23);
             textBox1.TabIndex = 75;
             // 
+            // pictureBox9
+            // 
+            pictureBox9.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(1025, 0);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(46, 32);
+            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox9.TabIndex = 76;
+            pictureBox9.TabStop = false;
+            pictureBox9.Click += pictureBox9_Click;
+            // 
             // Cows
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1069, 600);
+            Controls.Add(pictureBox9);
             Controls.Add(textBox1);
             Controls.Add(label18);
             Controls.Add(label11);
@@ -685,6 +700,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -738,5 +754,6 @@
         private Label label11;
         private Label label18;
         private TextBox textBox1;
+        private PictureBox pictureBox9;
     }
 }

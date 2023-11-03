@@ -51,13 +51,14 @@ namespace DairyFarmTool
             PhoneTb.Text = "";
             AddressTb.Text = "";
             GenCb.Text = "";
+            EmpPassTb.Text = "";
             DOB.Value = DateTime.Now; // Set the value to clear the DateTimePicker
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (GenCb.SelectedIndex == -1 || string.IsNullOrWhiteSpace(GenCb.Text) || NameTb.Text == "" || PhoneTb.Text == "" || AddressTb.Text == "")
+            if (GenCb.SelectedIndex == -1 || string.IsNullOrWhiteSpace(GenCb.Text) || NameTb.Text == "" || PhoneTb.Text == "" || AddressTb.Text == "" || EmpPassTb.Text == "")
             {
                 MessageBox.Show("Missing Information");
             }
@@ -67,7 +68,7 @@ namespace DairyFarmTool
                 {
                     Con.Open();
                     string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // Format the date as a string
-                    string Query = "INSERT INTO EmployeeTbl (EmpName, EmpDob, Gender, Phone, Adress) VALUES (@Value1, @Value2, @Value3, @Value4, @Value5)";
+                    string Query = "INSERT INTO EmployeeTbl (EmpName, EmpDob, Gender, Phone, Adress,EmpPass) VALUES (@Value1, @Value2, @Value3, @Value4, @Value5,@value6)";
                     SqlCommand cmd = new SqlCommand(Query, Con);
 
                     cmd.Parameters.AddWithValue("@Value1", NameTb.Text);
@@ -75,6 +76,7 @@ namespace DairyFarmTool
                     cmd.Parameters.AddWithValue("@Value3", GenCb.Text);
                     cmd.Parameters.AddWithValue("@Value4", PhoneTb.Text);
                     cmd.Parameters.AddWithValue("@Value5", AddressTb.Text);
+                    cmd.Parameters.AddWithValue("@Value6", EmpPassTb.Text);
 
                     cmd.ExecuteNonQuery();
 
@@ -105,7 +107,8 @@ namespace DairyFarmTool
                 DOB.Text = EmployeeDGV.Rows[e.RowIndex].Cells[2].Value?.ToString(); // EmpDob
                 GenCb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[3].Value?.ToString(); // Gender
                 PhoneTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[4].Value?.ToString(); // Phone
-                AddressTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[5].Value?.ToString(); // Address
+                AddressTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();// Address
+                EmpPassTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[6].Value?.ToString();
 
                 if (string.IsNullOrEmpty(NameTb.Text))
                 {
@@ -240,6 +243,11 @@ namespace DairyFarmTool
                 }
             }
 
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

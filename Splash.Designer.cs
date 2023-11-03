@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Splash));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            progressBar1 = new ProgressBar();
+            Myprogress = new ProgressBar();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -56,12 +58,16 @@
             label1.TabIndex = 1;
             label1.Text = "Dairy Farm Tool\r\n";
             // 
-            // progressBar1
+            // Myprogress
             // 
-            progressBar1.Location = new Point(1, 426);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(799, 24);
-            progressBar1.TabIndex = 2;
+            Myprogress.Location = new Point(1, 426);
+            Myprogress.Name = "Myprogress";
+            Myprogress.Size = new Size(799, 24);
+            Myprogress.TabIndex = 2;
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
             // 
             // Splash
             // 
@@ -69,13 +75,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkTurquoise;
             ClientSize = new Size(800, 450);
-            Controls.Add(progressBar1);
+            Controls.Add(Myprogress);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Splash";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += Splash_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -85,6 +92,7 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private ProgressBar progressBar1;
+        private ProgressBar Myprogress;
+        private System.Windows.Forms.Timer timer1;
     }
 }

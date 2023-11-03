@@ -50,9 +50,13 @@
             label2 = new Label();
             label1 = new Label();
             label5 = new Label();
+            label8 = new Label();
+            EmpPassTb = new TextBox();
+            pictureBox9 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)EmployeeDGV).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -179,9 +183,9 @@
             // 
             // AddressTb
             // 
-            AddressTb.Location = new Point(726, 217);
+            AddressTb.Location = new Point(543, 217);
             AddressTb.Name = "AddressTb";
-            AddressTb.Size = new Size(151, 23);
+            AddressTb.Size = new Size(261, 23);
             AddressTb.TabIndex = 83;
             // 
             // label10
@@ -190,7 +194,7 @@
             label10.BackColor = SystemColors.Control;
             label10.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label10.ForeColor = SystemColors.ActiveCaptionText;
-            label10.Location = new Point(758, 189);
+            label10.Location = new Point(640, 189);
             label10.Name = "label10";
             label10.Size = new Size(91, 25);
             label10.TabIndex = 82;
@@ -218,7 +222,7 @@
             // 
             // PhoneTb
             // 
-            PhoneTb.Location = new Point(414, 217);
+            PhoneTb.Location = new Point(328, 217);
             PhoneTb.Name = "PhoneTb";
             PhoneTb.Size = new Size(146, 23);
             PhoneTb.TabIndex = 78;
@@ -236,7 +240,7 @@
             label4.BackColor = SystemColors.Control;
             label4.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(449, 189);
+            label4.Location = new Point(361, 178);
             label4.Name = "label4";
             label4.Size = new Size(74, 25);
             label4.TabIndex = 76;
@@ -290,11 +294,45 @@
             label5.TabIndex = 95;
             label5.Text = "Employees";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = SystemColors.Control;
+            label8.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.Location = new Point(913, 178);
+            label8.Name = "label8";
+            label8.Size = new Size(106, 25);
+            label8.TabIndex = 96;
+            label8.Text = "Password";
+            // 
+            // EmpPassTb
+            // 
+            EmpPassTb.Location = new Point(890, 217);
+            EmpPassTb.Name = "EmpPassTb";
+            EmpPassTb.Size = new Size(146, 23);
+            EmpPassTb.TabIndex = 97;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(1023, 0);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(46, 32);
+            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox9.TabIndex = 98;
+            pictureBox9.TabStop = false;
+            pictureBox9.Click += pictureBox9_Click;
+            // 
             // Employee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1069, 600);
+            Controls.Add(pictureBox9);
+            Controls.Add(label8);
+            Controls.Add(EmpPassTb);
             Controls.Add(label5);
             Controls.Add(panel1);
             Controls.Add(label2);
@@ -323,6 +361,7 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)EmployeeDGV).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -370,5 +409,8 @@
         private Label label2;
         private Label label1;
         private Label label5;
+        private Label label8;
+        private TextBox EmpPassTb;
+        private PictureBox pictureBox9;
     }
 }

@@ -73,6 +73,7 @@
             PriceTb = new TextBox();
             EmpIdCb = new ComboBox();
             label18 = new Label();
+            pictureBox9 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             panel8.SuspendLayout();
@@ -90,6 +91,7 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SalesDGV).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -589,11 +591,24 @@
             label18.TabIndex = 70;
             label18.Text = "Emp Id";
             // 
+            // pictureBox9
+            // 
+            pictureBox9.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(1040, 0);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(46, 32);
+            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox9.TabIndex = 74;
+            pictureBox9.TabStop = false;
+            pictureBox9.Click += pictureBox9_Click;
+            // 
             // Milk_Sales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1085, 639);
+            Controls.Add(pictureBox9);
             Controls.Add(EmpIdCb);
             Controls.Add(label18);
             Controls.Add(PriceTb);
@@ -645,6 +660,7 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)SalesDGV).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -695,5 +711,6 @@
         private TextBox PriceTb;
         private ComboBox EmpIdCb;
         private Label label18;
+        private PictureBox pictureBox9;
     }
 }

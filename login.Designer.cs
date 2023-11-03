@@ -37,13 +37,15 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            UnameTb = new TextBox();
+            PasswordTb = new TextBox();
             button1 = new Button();
-            comboBox1 = new ComboBox();
+            RoleCb = new ComboBox();
             label4 = new Label();
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -100,7 +102,7 @@
             label1.BackColor = SystemColors.ControlLightLight;
             label1.Font = new Font("Clarendon Blk BT", 26.25F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(335, 18);
+            label1.Location = new Point(320, 52);
             label1.Name = "label1";
             label1.Size = new Size(322, 42);
             label1.TabIndex = 2;
@@ -142,22 +144,23 @@
             label3.TabIndex = 5;
             label3.Text = "\r\nPassword\r\n\r\n";
             // 
-            // textBox1
+            // UnameTb
             // 
-            textBox1.Font = new Font("Sanskrit Text", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(426, 371);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(231, 37);
-            textBox1.TabIndex = 6;
-            textBox1.TextChanged += textBox1_TextChanged;
+            UnameTb.Font = new Font("Sanskrit Text", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            UnameTb.Location = new Point(426, 371);
+            UnameTb.Name = "UnameTb";
+            UnameTb.Size = new Size(231, 37);
+            UnameTb.TabIndex = 6;
+            UnameTb.TextChanged += textBox1_TextChanged;
             // 
-            // textBox2
+            // PasswordTb
             // 
-            textBox2.Font = new Font("Sanskrit Text", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(426, 437);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(231, 37);
-            textBox2.TabIndex = 7;
+            PasswordTb.Font = new Font("Sanskrit Text", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            PasswordTb.Location = new Point(426, 437);
+            PasswordTb.Name = "PasswordTb";
+            PasswordTb.PasswordChar = '*';
+            PasswordTb.Size = new Size(231, 37);
+            PasswordTb.TabIndex = 7;
             // 
             // button1
             // 
@@ -172,28 +175,41 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
-            // comboBox1
+            // RoleCb
             // 
-            comboBox1.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Admin", "Employee" });
-            comboBox1.Location = new Point(380, 280);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(203, 33);
-            comboBox1.TabIndex = 9;
-            comboBox1.Text = "Select Role";
+            RoleCb.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RoleCb.FormattingEnabled = true;
+            RoleCb.Items.AddRange(new object[] { "Admin", "Employee" });
+            RoleCb.Location = new Point(380, 280);
+            RoleCb.Name = "RoleCb";
+            RoleCb.Size = new Size(203, 33);
+            RoleCb.TabIndex = 9;
+            RoleCb.Text = "Select Role";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.BackColor = SystemColors.ControlDark;
+            label4.BackColor = SystemColors.ControlLightLight;
             label4.Font = new Font("Century", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.ControlLightLight;
-            label4.Location = new Point(473, 571);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(477, 579);
             label4.Name = "label4";
             label4.Size = new Size(67, 50);
             label4.TabIndex = 10;
             label4.Text = "Reset\r\n\r\n";
+            label4.Click += label4_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(653, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(46, 32);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 11;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // login
             // 
@@ -201,11 +217,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(698, 684);
+            Controls.Add(pictureBox2);
             Controls.Add(label4);
-            Controls.Add(comboBox1);
+            Controls.Add(RoleCb);
             Controls.Add(button1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(PasswordTb);
+            Controls.Add(UnameTb);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(pictureBox1);
@@ -215,9 +232,11 @@
             Name = "login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "login";
+            Load += login_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -229,13 +248,14 @@
         private PictureBox pictureBox1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox UnameTb;
+        private TextBox PasswordTb;
         private Button button1;
-        private ComboBox comboBox1;
+        private ComboBox RoleCb;
         private Label label6;
         private Label label4;
         private Label label7;
         private Label label5;
+        private PictureBox pictureBox2;
     }
 }

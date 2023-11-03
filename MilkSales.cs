@@ -259,7 +259,7 @@ namespace DairyFarmTool
                     Con.Close(); // Close the connection in a finally block to ensure it gets closed.
                     populate(); // Refresh the data on your DataGridView.
                     SaveTransaction();
-                     Clear(); // Clear the input fields.
+                    Clear(); // Clear the input fields.
                 }
             }
 
@@ -289,6 +289,11 @@ namespace DairyFarmTool
 
             }
 
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
